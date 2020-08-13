@@ -32,7 +32,7 @@ node{
      }**/
 	 
      stage("Deploy To Kuberates Cluster"){
-        withCredentials([file(credentialsId: demo-key, variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
+        withCredentials([file(credentialsId: 'demo-key', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
          sh "gcloud auth activate-service-account --key-file=${GOOGLE_APPLICATION_CREDENTIALS}"
          sh "gcloud config set project mssdevops-284216"
          sh "gcloud config set compute/zone us-central1-c"
