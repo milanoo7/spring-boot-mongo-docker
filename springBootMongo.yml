@@ -16,7 +16,7 @@ spec:
         name: springboot
         ports:
         - name: springboot
-          containerPort: 8081     
+          containerPort: 80     
 ---
 # Node Port Service
 apiVersion: v1
@@ -26,10 +26,11 @@ metadata:
     name: springboot
   name: springboot
 spec:
-  type: LoadBalancer
+  type: NodePort
   ports:
     - port: 80
-      targetPort: 8080
+      targetPort: 80
+      nodePort: 30397
   selector:
     name: springboot
 ---
@@ -53,7 +54,6 @@ spec:
         ports:
         - name: mongo
           containerPort: 27017
-          hostPort: 27017
         volumeMounts:
         - name: mongo-persistent-storage
           mountPath: /data/db
