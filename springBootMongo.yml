@@ -1,6 +1,7 @@
 apiVersion: v1
-kind: ReplicationController
+kind: Deployment
 metadata:
+  namespace: milan-ns
   labels:
     name: springboot
   name: spring-controller
@@ -22,6 +23,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  namespace: milan-ns
   labels:
     name: springboot
   name: springboot
@@ -36,8 +38,9 @@ spec:
 ---
 # Mongo host path rc
 apiVersion: v1
-kind: ReplicationController
+kind: Deployment
 metadata:
+  namespace: milan-ns
   labels:
     name: mongo
   name: mongo-controller
@@ -66,6 +69,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  namespace: milan-ns
   labels:
     name: mongo
   name: mongo
